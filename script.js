@@ -2,6 +2,18 @@
 // the code isn't run until the browser has finished rendering all the elements
 // in the html.
 $(function () {
+  function displayDate() { 
+    var dayNumber = dayjs().day()
+    var dayOfWeek = dayjs(dayNumber).format('dddd')
+    var monthNumber = dayjs().month()
+    var month = dayjs(monthNumber).format('MMMM')
+    var dayOfMonth = dayjs().date()
+
+    var daydisplay = document.getElementById('daydisplay')
+
+    daydisplay.textContent = dayOfWeek + ', ' + month + ' ' + dayOfMonth
+    console.log (dayOfWeek, month)
+  }
   function saveNote() {
     // console.log($(this))
     // console.log($(this).siblings('.description'))
@@ -32,6 +44,8 @@ const currentHour = dayjs().hour();
       $(this).addClass("future");
     }
   });
+
+  displayDate()
   // TODO: Add a listener for click events on the save button. This code should
   //SAVE BUTTON/ LOCAL STORAGE
   // const saveButtons = document.querySelectorAll(".saveButton");
